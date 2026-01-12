@@ -2,9 +2,12 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import logging
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
+
+logger = logging.getLogger(__name__)
 
 # VAE model with custom loss
 class VAE(keras.Model):
@@ -119,8 +122,8 @@ def get_anomalies_by_vae(df: pd.DataFrame) -> pd.DataFrame:
     top = df.sort_values("vae_loss", ascending=False).head(10)
     result_df = top[["vae_loss","user","url","threat","bytes_rec","action","src_ip","dst_ip"]].copy()
     result_df['line'] = top.index + 1  # 1-based line number
-    print("Threshold:", threshold)
-    print(result_df)
+    logger.info(f"VAE processed {len(df)} records, found {len(result_df)} anomalies with threshold {threshold}")
+    logger.debug(f"Anomalies: {result_df.to_dict('records')}")
     return result_df
 
 def test_vae():

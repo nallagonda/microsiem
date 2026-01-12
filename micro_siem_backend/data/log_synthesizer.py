@@ -3,6 +3,9 @@ import io
 import random
 from datetime import datetime, timedelta
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Define Zscaler NSS Web log field order based on standard docs
 fields = [
@@ -62,7 +65,7 @@ log_lines = [generate_log_line(i) for i in range(10000)]
 with open("zscaler_nss_web_poc.log", "w") as f:
     f.write('\n'.join(log_lines))
 
-print(f"Generated 10,000 lines to zscaler_nss_web_poc.log")
+logger.info(f"Generated 10,000 lines to zscaler_nss_web_poc.log")
 
 # Parse and analyze for SOC insights
 reader = csv.reader(io.StringIO('\n'.join(log_lines)), delimiter='\t')
@@ -76,11 +79,11 @@ for row in parsed:
         blocked_by_user[user] = blocked_by_user.get(user, 0) + 1
 
 top_blocked = sorted(blocked_by_user.items(), key=lambda x: x[1], reverse=True)[:5]
-print("\nTop Blocked Users:", top_blocked)
+logger.info(f"Top Blocked Users: {top_blocked}")
 
 # Suspicious high bytes malware
 suspicious = [row for row in parsed if len(row) >= 20 and 'Malware' in row[5] and int(row[15]) > 100000][:5]
-print("\nSuspicious High-Bytes Malware:", suspicious)
+logger.info(f"Suspicious High-Bytes Malware entries: {len(suspicious)}")
 
 # Timeline summary
 timeline = {}
@@ -90,17 +93,17 @@ for row in parsed:
         timeline[hr] = timeline.get(hr, 0) + 1
 
 timeline_summary = sorted(timeline.items(), key=lambda x: int(x[1]), reverse=True)[:10]
-print("\nTimeline Summary:", timeline_summary)
+logger.info(f"Timeline Summary: {timeline_summary}")
 
 def test_log_synthesizer():
     """Test function for log synthesizer."""
     # Generate a small sample
     sample_lines = [generate_log_line(i) for i in range(100)]
-    print(f"Generated {len(sample_lines)} sample lines.")
+    logger.info(f"Generated {len(sample_lines)} sample lines.")
     # Parse and check
     reader = csv.reader(io.StringIO('\n'.join(sample_lines)), delimiter='\t')
     parsed_sample = list(reader)
-    print(f"Parsed {len(parsed_sample)} rows.")
+    logger.info(f"Parsed {len(parsed_sample)} rows.")
     return parsed_sample
 
 if __name__ == "__main__":

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 interface FileUploadProps {
   onLogout: () => void;
   token: string;
@@ -64,7 +66,7 @@ function FileUpload({ onLogout, token, onUploadSuccess, user }: FileUploadProps)
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('http://localhost:5000/upload', {
+      const response = await fetch(`${API_BASE_URL}/upload`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

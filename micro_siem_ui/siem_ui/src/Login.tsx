@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './Login.css'; // We'll create this later
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 declare global {
   interface Window {
     google: {
@@ -53,7 +55,7 @@ function Login({ onLogin }: LoginProps) {
 
   const handleCredentialResponse = async (response: any) => {
     try {
-      const res = await fetch('http://localhost:5000/google_login', {
+      const res = await fetch(`${API_BASE_URL}/google_login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +81,7 @@ function Login({ onLogin }: LoginProps) {
     e.preventDefault();
     if (username && password) {
       try {
-        const response = await fetch('http://localhost:5000/login', {
+        const response = await fetch(`${API_BASE_URL}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

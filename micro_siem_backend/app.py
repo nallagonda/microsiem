@@ -7,12 +7,17 @@ import os
 import datetime
 import threading
 import json
+import logging
 from dotenv import load_dotenv
 from log_analyzer import analyze_log
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
 
 load_dotenv()
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
@@ -31,26 +36,33 @@ def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
+    logger.info(f"Login attempt for user: {username}")
+
     # Validate credentials
     if username not in USERS or USERS[username] != password:
+        logger.warning(f"Failed login attempt for user: {username}")
         return jsonify({"msg": "Bad username or password"}), 401
 
     # Create a token for the user
     access_token = create_access_token(identity=username)
+    logger.info(f"Successful login for user: {username}")
     return jsonify(access_token=access_token)
 
 @app.route("/google_login", methods=["POST"])
 def google_login():
     token = request.json.get("token", None)
     if not token:
+        logger.warning("Google login attempt without token")
         return jsonify({"msg": "No token provided"}), 400
 
     try:
         idinfo = id_token.verify_oauth2_token(token, google_requests.Request(), CLIENT_ID)
+        logger.info(f"Google login successful for user: {idinfo['email']}")
         # If valid, create Flask token using email as identity
         access_token = create_access_token(identity=idinfo['email'])
         return jsonify(access_token=access_token)
     except ValueError as e:
+        logger.warning(f"Google login failed: {str(e)}")
         return jsonify({"msg": "Invalid token"}), 401
 
 @app.route("/protected", methods=["GET"])
@@ -64,13 +76,15 @@ def protected():
 @jwt_required()
 def upload_file():
     if 'file' not in request.files:
+        logger.error("No file part in upload request")
         return jsonify({"msg": "No file part"}), 400
     file = request.files['file']
     if file.filename == '':
+        logger.warning("Empty filename in upload")
         return jsonify({"msg": "No selected file"}), 400
 
     current_user = get_jwt_identity()
-    print(f"Logged in user name is {current_user}")
+    logger.info(f"File upload by user: {current_user}, filename: {file.filename}")
 
     # Get timestamp in milliseconds
     timestamp_ms = int(datetime.datetime.now().timestamp() * 1000)
@@ -89,10 +103,12 @@ def upload_file():
     # Save the file
     file_path = os.path.join(staging_dir, new_filename)
     file.save(file_path)
+    logger.info(f"File saved: {file_path}")
 
     # Start log analysis in a background thread
     analysis_thread = threading.Thread(target=analyze_log, args=(file_path,))
     analysis_thread.start()
+    logger.info("Log analysis started in background thread")
 
     return jsonify({"msg": "File uploaded successfully", "file_id": new_filename}), 200
 

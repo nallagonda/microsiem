@@ -2,10 +2,13 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import logging
 
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
+
+logger = logging.getLogger(__name__)
 
 
 def get_anomalies_by_autoencoder(df: pd.DataFrame) -> pd.DataFrame:
@@ -71,8 +74,8 @@ def get_anomalies_by_autoencoder(df: pd.DataFrame) -> pd.DataFrame:
     top = df.sort_values("ae_loss", ascending=False).head(10)
     result_df = top[["ae_loss","user","url","threat","bytes_rec","action","src_ip","dst_ip"]].copy()
     result_df['line'] = top.index + 1  # 1-based line number
-    print(result_df)
-    print("Threshold:", threshold)
+    logger.info(f"Autoencoder processed {len(df)} records, found {len(result_df)} anomalies with threshold {threshold}")
+    logger.debug(f"Anomalies: {result_df.to_dict('records')}")
     return result_df
 
 if __name__ == "__main__":

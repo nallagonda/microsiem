@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import './Analysis.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 interface AnomaliesProps {
   onBack: () => void;
   token: string;
@@ -16,7 +18,7 @@ function Anomalies({ onBack, token, fileId }: AnomaliesProps) {
   useEffect(() => {
     const fetchAnalysis = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/analysis/${fileId}`, {
+        const response = await fetch(`${API_BASE_URL}/analysis/${fileId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -78,7 +80,7 @@ function Anomalies({ onBack, token, fileId }: AnomaliesProps) {
               <h1>Exploratory Data Analysis</h1>
               {data.graphs.map((graph: string, index: number) => (
                 <div key={index} style={{ marginBottom: '20px' }}>
-                  <img src={`http://localhost:5000/analysis_file/${fileId.replace('.log', '_' + graph)}`} alt={`EDA Graph ${index + 1}`} style={{ maxWidth: '100%', height: 'auto' }} />
+                  <img src={`${API_BASE_URL}/analysis_file/${fileId.replace('.log', '_' + graph)}`} alt={`EDA Graph ${index + 1}`} style={{ maxWidth: '100%', height: 'auto' }} />
                 </div>
               ))}
             </>

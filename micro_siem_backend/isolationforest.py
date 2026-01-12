@@ -2,6 +2,9 @@ from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 import numpy as np
+import logging
+
+logger = logging.getLogger(__name__)
 
 def get_anomalies_by_isolationforest(df: pd.DataFrame) -> pd.DataFrame:
     # Parse your 10k log into features
@@ -29,7 +32,8 @@ def get_anomalies_by_isolationforest(df: pd.DataFrame) -> pd.DataFrame:
     top = df.sort_values('anomaly_score', ascending=False).head(10)
     result_df = top[['user', 'url', 'threat', 'bytes_rec', 'anomaly_score', 'src_ip', 'dst_ip', 'action']].copy()
     result_df['line'] = top.index + 1  # 1-based line number
-    print(result_df)
+    logger.info(f"IsolationForest processed {len(df)} records, found {len(result_df)} anomalies")
+    logger.debug(f"Anomalies: {result_df.to_dict('records')}")
     return result_df
 
 if __name__ == "__main__":
