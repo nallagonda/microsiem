@@ -1,0 +1,7 @@
+{
+    "anomalies": {
+        "isolationforest": [],
+        "autoencoder": [],
+        "vae": []
+    }
+}

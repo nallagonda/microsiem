@@ -1,0 +1,345 @@
+{
+    "anomalies": {
+        "isolationforest": [
+            {
+                "user": "mlee@corp.com",
+                "url": "https://www.example89.com/path8.html",
+                "threat": "NONE",
+                "bytes_rec": 9306,
+                "anomaly_score": 0.0877926203000593,
+                "src_ip": "10.0.167.200",
+                "dst_ip": "99.233.252.2",
+                "action": "BLOCK",
+                "line": 1930
+            },
+            {
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example28.com/path8.html",
+                "threat": "NONE",
+                "bytes_rec": 3146,
+                "anomaly_score": 0.08025132892589792,
+                "src_ip": "10.0.19.232",
+                "dst_ip": "120.226.140.100",
+                "action": "BLOCK",
+                "line": 3665
+            },
+            {
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example84.com/path4.html",
+                "threat": "NONE",
+                "bytes_rec": 37832,
+                "anomaly_score": 0.07104758999339655,
+                "src_ip": "10.0.103.213",
+                "dst_ip": "105.137.196.36",
+                "action": "BLOCK",
+                "line": 7976
+            },
+            {
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example52.com/path9.html",
+                "threat": "NONE",
+                "bytes_rec": 199894,
+                "anomaly_score": 0.06763921608319379,
+                "src_ip": "10.0.177.211",
+                "dst_ip": "150.126.217.245",
+                "action": "BLOCK",
+                "line": 25
+            },
+            {
+                "user": "jdoe@example.com",
+                "url": "https://www.example10.com/path7.html",
+                "threat": "NONE",
+                "bytes_rec": 7451,
+                "anomaly_score": 0.06540906593461382,
+                "src_ip": "10.0.208.182",
+                "dst_ip": "96.211.131.116",
+                "action": "BLOCK",
+                "line": 9559
+            },
+            {
+                "user": "jdoe@example.com",
+                "url": "https://www.example36.com/path8.html",
+                "threat": "NONE",
+                "bytes_rec": 42141,
+                "anomaly_score": 0.06507838393823562,
+                "src_ip": "10.0.42.57",
+                "dst_ip": "189.171.247.176",
+                "action": "BLOCK",
+                "line": 4400
+            },
+            {
+                "user": "asmith@corp.com",
+                "url": "https://www.example20.com/path6.html?",
+                "threat": "NONE",
+                "bytes_rec": 18968,
+                "anomaly_score": 0.0627841429042949,
+                "src_ip": "10.0.27.42",
+                "dst_ip": "103.112.17.148",
+                "action": "BLOCK",
+                "line": 8571
+            },
+            {
+                "user": "asmith@corp.com",
+                "url": "https://www.example9.com/path1.html?",
+                "threat": "NONE",
+                "bytes_rec": 196304,
+                "anomaly_score": 0.06254317909950458,
+                "src_ip": "10.0.14.38",
+                "dst_ip": "182.213.83.61",
+                "action": "BLOCK",
+                "line": 2631
+            },
+            {
+                "user": "jdoe@example.com",
+                "url": "https://www.example50.com/path1.html",
+                "threat": "NONE",
+                "bytes_rec": 45954,
+                "anomaly_score": 0.06248956366917047,
+                "src_ip": "10.0.39.52",
+                "dst_ip": "101.250.232.1",
+                "action": "BLOCK",
+                "line": 8976
+            },
+            {
+                "user": "mlee@corp.com",
+                "url": "https://www.example82.com/path4.html",
+                "threat": "NONE",
+                "bytes_rec": 4961,
+                "anomaly_score": 0.061819835332029616,
+                "src_ip": "10.0.185.93",
+                "dst_ip": "112.128.243.243",
+                "action": "BLOCK",
+                "line": 4672
+            }
+        ],
+        "autoencoder": [
+            {
+                "ae_loss": 0.06330742466596738,
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example98.com/path9.html",
+                "threat": "Command-Control",
+                "bytes_rec": 197661,
+                "action": "ALERT",
+                "src_ip": "10.0.17.188",
+                "dst_ip": "193.131.108.120",
+                "line": 695
+            },
+            {
+                "ae_loss": 0.04508797255536246,
+                "user": "jdoe@example.com",
+                "url": "https://www.example88.com/path3.html?",
+                "threat": "Command-Control",
+                "bytes_rec": 3997,
+                "action": "ALLOW",
+                "src_ip": "10.0.75.173",
+                "dst_ip": "138.165.69.144",
+                "line": 4341
+            },
+            {
+                "ae_loss": 0.042523704293751324,
+                "user": "asmith@corp.com",
+                "url": "https://www.example70.com/path6.html",
+                "threat": "Command-Control",
+                "bytes_rec": 172456,
+                "action": "ALLOW",
+                "src_ip": "10.0.221.164",
+                "dst_ip": "130.208.150.82",
+                "line": 3566
+            },
+            {
+                "ae_loss": 0.037751405972925825,
+                "user": "asmith@corp.com",
+                "url": "https://www.example75.com/path3.html",
+                "threat": "Command-Control",
+                "bytes_rec": 199429,
+                "action": "ALLOW",
+                "src_ip": "10.0.206.8",
+                "dst_ip": "119.219.160.31",
+                "line": 6566
+            },
+            {
+                "ae_loss": 0.036494909743478215,
+                "user": "jdoe@example.com",
+                "url": "https://www.example13.com/path4.html",
+                "threat": "Malware",
+                "bytes_rec": 181198,
+                "action": "ALERT",
+                "src_ip": "10.0.79.155",
+                "dst_ip": "139.129.62.155",
+                "line": 515
+            },
+            {
+                "ae_loss": 0.0356574979091575,
+                "user": "mlee@corp.com",
+                "url": "https://www.example86.com/path5.html",
+                "threat": "Command-Control",
+                "bytes_rec": 171513,
+                "action": "ALLOW",
+                "src_ip": "10.0.46.45",
+                "dst_ip": "142.191.243.126",
+                "line": 9012
+            },
+            {
+                "ae_loss": 0.03513118318360559,
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example18.com/path10.html",
+                "threat": "Phishing",
+                "bytes_rec": 186459,
+                "action": "ALERT",
+                "src_ip": "10.0.7.223",
+                "dst_ip": "150.120.212.253",
+                "line": 7583
+            },
+            {
+                "ae_loss": 0.03291726903057419,
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example89.com/path9.html",
+                "threat": "Malware",
+                "bytes_rec": 133139,
+                "action": "ALERT",
+                "src_ip": "10.0.9.171",
+                "dst_ip": "127.170.14.25",
+                "line": 7677
+            },
+            {
+                "ae_loss": 0.031510130836829915,
+                "user": "mlee@corp.com",
+                "url": "https://www.example75.com/path2.html",
+                "threat": "Malware",
+                "bytes_rec": 168536,
+                "action": "ALERT",
+                "src_ip": "10.0.65.48",
+                "dst_ip": "143.194.216.1",
+                "line": 823
+            },
+            {
+                "ae_loss": 0.03140464753369982,
+                "user": "jdoe@example.com",
+                "url": "https://www.example100.com/path3.html",
+                "threat": "Phishing",
+                "bytes_rec": 6960,
+                "action": "ALLOW",
+                "src_ip": "10.0.160.77",
+                "dst_ip": "126.108.193.247",
+                "line": 4498
+            }
+        ],
+        "vae": [
+            {
+                "vae_loss": 2.385960769352637,
+                "user": "jdoe@example.com",
+                "url": "https://www.example78.com/path3.html",
+                "threat": "NONE",
+                "bytes_rec": 7651,
+                "action": "BLOCK",
+                "src_ip": "10.0.151.48",
+                "dst_ip": "196.126.69.235",
+                "line": 2895
+            },
+            {
+                "vae_loss": 2.309830582472997,
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example84.com/path4.html",
+                "threat": "NONE",
+                "bytes_rec": 37832,
+                "action": "BLOCK",
+                "src_ip": "10.0.103.213",
+                "dst_ip": "105.137.196.36",
+                "line": 7976
+            },
+            {
+                "vae_loss": 2.302922098131103,
+                "user": "jdoe@example.com",
+                "url": "https://www.example69.com/path3.html",
+                "threat": "NONE",
+                "bytes_rec": 46997,
+                "action": "BLOCK",
+                "src_ip": "10.0.14.145",
+                "dst_ip": "112.144.201.122",
+                "line": 6192
+            },
+            {
+                "vae_loss": 2.292557324172004,
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example28.com/path8.html",
+                "threat": "NONE",
+                "bytes_rec": 3146,
+                "action": "BLOCK",
+                "src_ip": "10.0.19.232",
+                "dst_ip": "120.226.140.100",
+                "line": 3665
+            },
+            {
+                "vae_loss": 2.2705085059105277,
+                "user": "mlee@corp.com",
+                "url": "https://www.example89.com/path8.html",
+                "threat": "NONE",
+                "bytes_rec": 9306,
+                "action": "BLOCK",
+                "src_ip": "10.0.167.200",
+                "dst_ip": "99.233.252.2",
+                "line": 1930
+            },
+            {
+                "vae_loss": 2.2568188991887714,
+                "user": "mlee@corp.com",
+                "url": "https://www.example93.com/path9.html",
+                "threat": "Command-Control",
+                "bytes_rec": 172438,
+                "action": "ALERT",
+                "src_ip": "10.0.102.241",
+                "dst_ip": "106.196.82.30",
+                "line": 6435
+            },
+            {
+                "vae_loss": 2.147174026589682,
+                "user": "bjohnson@corp.com",
+                "url": "https://www.example37.com/path5.html",
+                "threat": "Command-Control",
+                "bytes_rec": 188863,
+                "action": "ALLOW",
+                "src_ip": "10.0.195.93",
+                "dst_ip": "118.192.190.165",
+                "line": 1784
+            },
+            {
+                "vae_loss": 2.1020329318968485,
+                "user": "jdoe@example.com",
+                "url": "https://www.example27.com/path3.html",
+                "threat": "NONE",
+                "bytes_rec": 184205,
+                "action": "BLOCK",
+                "src_ip": "10.0.157.138",
+                "dst_ip": "190.114.46.218",
+                "line": 9729
+            },
+            {
+                "vae_loss": 2.0940497256208412,
+                "user": "asmith@corp.com",
+                "url": "https://www.example61.com/path7.html",
+                "threat": "NONE",
+                "bytes_rec": 11382,
+                "action": "BLOCK",
+                "src_ip": "10.0.170.26",
+                "dst_ip": "150.196.52.65",
+                "line": 4944
+            },
+            {
+                "vae_loss": 2.0688579136919762,
+                "user": "mlee@corp.com",
+                "url": "https://www.example88.com/path1.html",
+                "threat": "NONE",
+                "bytes_rec": 170911,
+                "action": "BLOCK",
+                "src_ip": "10.0.40.8",
+                "dst_ip": "123.229.217.156",
+                "line": 9962
+            }
+        ]
+    },
+    "graphs": [
+        "eda_action.png",
+        "eda_threat.png",
+        "eda_bytes.png"
+    ]
+}
