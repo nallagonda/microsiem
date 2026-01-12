@@ -92,15 +92,15 @@ The Flask backend is configured to serve the built frontend static files. After 
 
 2. Build the Docker image from the project root:
    ```bash
-   docker build -t micro-siem .
+   docker build -t tenexproject .
    ```
 
 3. Run the container:
    ```bash
-   docker run -p 5000:5000 micro-siem
+   docker run -p 5002:5000 tenexproject
    ```
 
-4. Access the application at http://localhost:5000
+4. Access the application at http://localhost:5002
 
 ## API Endpoints
 
