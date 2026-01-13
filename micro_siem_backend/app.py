@@ -312,4 +312,4 @@ if __name__ == "__main__":
     # Start the Flask development server
     # host='0.0.0.0' allows connections from any IP (useful for containers)
     # debug=True enables debug mode with auto-reload and error pages
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, port=int(os.environ.get("PORT", 8080)))
